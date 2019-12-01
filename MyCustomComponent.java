@@ -10,6 +10,7 @@ import javax.swing.JComponent;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -29,6 +30,7 @@ public class MyCustomComponent extends JComponent
     	populate();
     	current = new PictureSquare(0,0);
     	current.assign(tiles[4][4]);
+    	scramble5();
     }
     
     
@@ -46,6 +48,64 @@ public class MyCustomComponent extends JComponent
     		}
     	}
     }
+    //scrambles the puzzle with 5 random moves
+    public void scramble5()
+    {
+    	for (int i = 0; i < 500; i++)
+    	{
+    		int x = getCurrentX();
+        	int y = getCurrentY();
+        	
+    		System.out.println(getCurrentX() + " " + getCurrentY());
+    		Random r = new Random();
+    		int code = r.nextInt(4);
+    		
+    		switch(code)
+    		{
+    		case 0:
+    			if (y > 0)
+    			{
+    				int v = y - 1;
+    				swapTiles(x, y, x, v);
+    	    		setCurrentY(v);
+    			}
+    				
+    			System.out.println("up");
+    			break;
+    		
+    		case 1:
+    			if (y < 4)
+    			{
+    				int v = y + 1;
+    				swapTiles(x, y, x, v);
+    	    		setCurrentY(v);
+    			}
+    			System.out.println("down");
+    			break;
+    		
+    		case 2:
+    			if (x > 0)
+    			{
+    				int u = x - 1;
+    				swapTiles(x, y, u, y);
+    	    		setCurrentX(u);
+    			}
+    			System.out.println("left");
+    			break;
+    		
+    		case 3:
+    			if (x < 4)
+    			{
+    				int u = x + 1;
+    				swapTiles(x, y, u, y);
+    	    		setCurrentX(u);
+    			}
+    			System.out.println("right");
+    			break;
+    		}
+    	}
+    }
+    
     //takes in the points for the location of the destination and switches the IDs
     // of the two units
     // x,y = current
