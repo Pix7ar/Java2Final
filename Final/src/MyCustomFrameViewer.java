@@ -7,11 +7,12 @@
  * @version 11/25/2019
  */
 
+import java.io.IOException;
 import javax.swing.JFrame;
 
 public class MyCustomFrameViewer
 {
-   public static void main(String[] args)
+   public static void main(String[] args) throws IOException
    {
       MyCustomFrame frame = new MyCustomFrame();
       frame.setTitle("Crappy jigsaw");

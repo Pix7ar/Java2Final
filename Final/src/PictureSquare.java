@@ -2,13 +2,18 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 
 public class PictureSquare extends JComponent
 {
 	private static int count = 0;
 	private int x, y, id;
 	private final int WIDTH = 50, HEIGHT = 50;
+	private BufferedImage picture;
 	
 	public PictureSquare(int xBox, int yBox)
 	{
@@ -50,6 +55,11 @@ public class PictureSquare extends JComponent
 		return id;
 	}
 	
+	public BufferedImage getImage()
+	{
+		return picture;
+	}
+	
 	public void setX(int u)
 	{
 		x = u;
@@ -63,6 +73,11 @@ public class PictureSquare extends JComponent
 	public void setID(int other)
 	{
 		id = other;
+	}
+	
+	public void setImage(BufferedImage other)
+	{
+		picture = other;
 	}
 	
 	public void paintComponent(Graphics g)
